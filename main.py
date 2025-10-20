@@ -5,7 +5,7 @@ import os
 
 app = FastAPI()
 
-app.mount("/Multimedia/img", StaticFiles(directory="Multimedia/img"), name="multimedia/img")
+app.mount("/Multimedia", StaticFiles(directory="Multimedia"), name="Multimedia")
 
 @app.get("/")
 def read_root():
