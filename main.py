@@ -5,14 +5,7 @@ import os
 
 app = FastAPI()
 
-#app.mount("/Multimedia", StaticFiles(directory="Multimedia"), name="Multimedia")
-
-multimedia_path = "Multimedia"
-
-if os.path.exists(multimedia_path):
-    app.mount("/Multimedia", StaticFiles(directory=multimedia_path), name="Multimedia")
-else:
-    print("⚠️ Carpeta 'Multimedia' no encontrada")
+app.mount("/Multimedia", StaticFiles(directory="Multimedia"), name="Multimedia")
 
 @app.get("/")
 def read_root():
