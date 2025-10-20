@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 import os
 
 app = FastAPI()
+
+app.mount("/Multimedia", StaticFiles(directory="Multimedia"), name="Multimedia")
 
 @app.get("/")
 def read_root():
