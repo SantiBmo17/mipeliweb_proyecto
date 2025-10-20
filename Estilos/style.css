@@ -53,10 +53,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  
 }
 
 .profile-text-container {
   margin: 0 20px;
+  
 }
 
 .profile-picture {
