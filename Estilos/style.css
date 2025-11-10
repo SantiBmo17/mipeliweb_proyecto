@@ -274,3 +274,51 @@ body {
         display: none;
     }
 }
+
+.search-container {
+  position: fixed;
+  top: 20px;
+  left: 80px;
+  display: flex;
+  align-items: center;
+  background: rgba(20, 20, 20, 0.9);
+  padding: 8px 12px;
+  border-radius: 8px;
+  gap: 8px;
+  z-index: 1000;
+}
+
+.search-container input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+  color: white;
+  outline: none;
+  width: 200px;
+}
+
+.search-container button {
+  background: #e50914;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: flex;
+}
+
+.results {
+  position: fixed;
+  top: 60px;
+  left: 80px;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  width: 250px;
+}

@@ -32,7 +32,7 @@
                 </ul>
             </div>
             <div class="profile-container">
-                <img class="profile-picture" src="/Multimedia/img/profile.jpg" alt="">
+                <img class="profile-picture" src="/Multimedia/img/profile.jpg" href="login.html" alt="">
                 <div class="profile-text-container">
                     <span class="profile-text" href>Perfil</span>
                     <i class="fas fa-caret-down"></i>
@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="sidebar">
-        <i class="left-menu-icon fas fa-search"></i>
+        <i class="left-menu-icon fas fa-search" id="SearchIcon"></i>
         <i class="left-menu-icon fas fa-home"></i>
         <i class="left-menu-icon fas fa-users"></i>
         <i class="left-menu-icon fas fa-bookmark"></i>
@@ -54,6 +54,14 @@
         <i class="left-menu-icon fas fa-hourglass-start"></i>
         <i class="left-menu-icon fas fa-shopping-cart"></i>
     </div>
+
+    <div id="SearchIcon" class="Search-container hidde">
+        <input type="text" id="SearchInput" placeholder="Buscar Pelicula...">
+        <button id="searchButton">🔍</button>
+    </div>
+
+    <div id="results" class="results"></div>
+
     <div class="container">
         <div class="content-container">
             <div class="featured-content"

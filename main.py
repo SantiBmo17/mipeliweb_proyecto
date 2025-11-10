@@ -1,15 +1,21 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from api import peliculas
 import os
 
 app = FastAPI()
 
+#Cuando alguien entre a.... Sirve los archivos desde esas carpetas
 app.mount("/Multimedia", StaticFiles(directory="Multimedia"), name="Multimedia")
+app.mount("/Estilos", StaticFiles(directory="Estilos"), name="Estilos")
+app.mount("/Scripts", StaticFiles(directory="Scripts"), name="Scripts")
 
 @app.get("/")
 def read_root():
     return FileResponse(os.path.join("index.html"))
+
+app.include_router(peliculas.router)
 
 @app.get("/{file_path:path}")
 def static_files(file_path: str):
@@ -17,3 +23,5 @@ def static_files(file_path: str):
     if os.path.exists(path):
         return FileResponse(path)
     return {"error": "Archivo no encontrado"}
+
+

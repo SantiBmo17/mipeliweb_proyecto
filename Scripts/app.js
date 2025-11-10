@@ -1,6 +1,41 @@
 const arrows = document.querySelectorAll(".arrow");
 const movieLists = document.querySelectorAll(".movie-list");
 
+const searchIcon = document.getElementById("searchIcon");
+const searchContainer = document.getElementById("searchContainer");
+const searchButton = document.getElementById("searchButton");
+const resultsDiv = document.getElementById("results");
+
+//BUSCADOR
+
+searchIcon.addEventListener("click", () => {
+  searchContainer.classList.toggle("hidden");
+  resultsDiv.innerHTML = "";
+});
+
+searchButton.addEventListener("click", buscarPelicula);
+
+async function buscarPelicula() {
+  const query = document.getElementById("searchInput").value;
+  if (!query) return alert("Escribe algo para buscar");
+
+  const response = await fetch(`http://127.0.0.1:8000/api/peliculas?titulo=${encodeURIComponent(query)}`);
+  const data = await response.json();
+
+  resultsDiv.innerHTML = "";
+
+  if (data.mensaje) {
+    resultsDiv.innerHTML = `<p>${data.mensaje}</p>`;
+  } else {
+    data.forEach(p => {
+      const item = document.createElement("div");
+      item.innerHTML = `<strong>${p.titulo}</strong> (${p.anio})`;
+      resultsDiv.appendChild(item);
+    });
+  }
+}
+
+//ARROW
 arrows.forEach((arrow, i) => {
   const itemNumber = movieLists[i].querySelectorAll("img").length;
   let clickCounter = 0;
