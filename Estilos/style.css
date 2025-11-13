@@ -161,7 +161,7 @@ body {
   align-items: center;
   height: 300px;
   transform: translateX(0);
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .movie-list-item {
@@ -236,6 +236,12 @@ body {
   color: lightgray;
   opacity: 0.5;
   cursor: pointer;
+  z-index: 10;
+}
+
+.arrow:hover{
+  opacity: 1;
+  color: #e50914;
 }
 
 .container.active {
@@ -277,8 +283,8 @@ body {
 
 .search-container {
   position: fixed;
-  top: 20px;
-  left: 80px;
+  top: 2px;
+  left: 950px;
   display: flex;
   align-items: center;
   background: rgba(20, 20, 20, 0.9);
@@ -304,6 +310,15 @@ body {
   padding: 6px 10px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.search-container i{
+  font-size: 20px;
+  color: white;
+}
+
+.search-container i:hover {
+  color: #4dbf00;
 }
 
 .hidden {
