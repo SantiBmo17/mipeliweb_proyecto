@@ -21,7 +21,7 @@ if (searchButton) {
 
 async function buscarPelicula() {
     const searchInput = document.getElementById("SearchInput");    
-    const query = searchInput.value;
+    const query = searchInput.value.trim();
 
     if (!query) {
         alert("Escribe algo para buscar");
