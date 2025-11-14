@@ -281,7 +281,7 @@ body {
     }
 }
 
-.search-container {
+.Search-container {
   position: fixed;
   top: 2px;
   left: 950px;
@@ -294,7 +294,7 @@ body {
   z-index: 1000;
 }
 
-.search-container input {
+.Search-container input {
   background: transparent;
   border: none;
   border-bottom: 2px solid #fff;
@@ -303,7 +303,7 @@ body {
   width: 200px;
 }
 
-.search-container button {
+.Search-container button {
   background: #e50914;
   border: none;
   color: white;
@@ -312,12 +312,12 @@ body {
   cursor: pointer;
 }
 
-.search-container i{
+.Search-container i{
   font-size: 20px;
   color: white;
 }
 
-.search-container i:hover {
+.Search-container i:hover {
   color: #4dbf00;
 }
 
@@ -328,12 +328,70 @@ body {
 .results {
   position: fixed;
   top: 60px;
-  left: 80px;
-  background: rgba(0,0,0,0.85);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.95);
   color: white;
-  padding: 10px;
+  padding: 15px;
   border-radius: 8px;
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
-  width: 250px;
+  width: 400px;
+  z-index: 1000;
+  border: 1px solid #333;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+}
+
+.result-item {
+    padding: 12px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.result-item:hover {
+    background-color: #222;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.ver-detalle-btn {
+    background-color: #4dbf00;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.ver-detalle-btn:hover {
+    background-color: #3da000;
+    transform: translateY(-1px);
+}
+
+.error {
+    color: #e50914;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+}
+
+.search-icon-container {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.search-icon-container i {
+    font-size: 20px;
+    color: white;
+}
+
+.search-icon-container i:hover {
+    color: #4dbf00;
 }

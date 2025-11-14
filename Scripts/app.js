@@ -1,16 +1,17 @@
 const arrows = document.querySelectorAll(".arrow");
 const movieLists = document.querySelectorAll(".movie-list");
 
-// BUSCADOR - CORREGIDO
+// BUSCADOR
 const searchIcon = document.getElementById("searchIcon");
 const searchContainer = document.getElementById("SearchIcon");
 const searchButton = document.getElementById("searchButton");
 const resultsDiv = document.getElementById("results");
 
-if (searchIcon) {
+// Solo ejecutar si los elementos existen
+if (searchIcon && searchContainer) {
     searchIcon.addEventListener("click", () => {
         searchContainer.classList.toggle("hidden");
-        resultsDiv.innerHTML = "";
+        if (resultsDiv) resultsDiv.innerHTML = "";
     });
 }
 
@@ -19,34 +20,65 @@ if (searchButton) {
 }
 
 async function buscarPelicula() {
-    const query = document.getElementById("SearchInput").value;
-    if (!query) return alert("Escribe algo para buscar");
+    const searchInput = document.getElementById("SearchInput");    
+    const query = searchInput.value;
+
+    if (!query) {
+        alert("Escribe algo para buscar");
+        return;
+    }
 
     try {
+        console.log("Buscando:", query);
         const response = await fetch(`http://127.0.0.1:8000/api/peliculas?titulo=${encodeURIComponent(query)}`);
-        const data = await response.json();
-
-        resultsDiv.innerHTML = "";
-
-        if (data.mensaje) {
-            resultsDiv.innerHTML = `<p>${data.mensaje}</p>`;
-        } else {
-            data.forEach(p => {
-                const item = document.createElement("div");
-                item.innerHTML = `<strong>${p.titulo}</strong> (${p.anio})`;
-                resultsDiv.appendChild(item);
-            });
+        
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
         }
+        
+        const data = await response.json();
+        console.log("Datos recibidos:", data);
+
+        if (resultsDiv) {
+            resultsDiv.innerHTML = "";
+
+            if (data.mensaje) {
+                resultsDiv.innerHTML = `<p>${data.mensaje}</p>`;
+            } else {
+                data.forEach(p => {
+                    const item = document.createElement("div");
+                    item.classList.add("result-item");
+                    item.innerHTML = `
+                      <div>
+                        <strong>${p.titulo}</strong> (${p.anio})
+                        <br>
+                        <small>${p.genero}</small>
+                      </div>
+                        <button onclick="verDetalles(${p.id})" class="ver-detalle-btn">Ver Detalles</button>
+                    `;
+                    resultsDiv.appendChild(item);
+                });
+            }
+        }
+
     } catch (error) {
         console.error("Error en la búsqueda:", error);
-        resultsDiv.innerHTML = `<p>Error al buscar películas</p>`;
+        if (resultsDiv) {
+            resultsDiv.innerHTML = `<p>Error al conectar con el servidor</p>`;
+        }
     }
 }
 
-// ARROW FUNCTION - COMPLETAMENTE CORREGIDA
+// Función para ver detalles 
+function verDetalles(peliculaId) {
+    console.log("Abriendo detalles para pelicula ID:", peliculaId)
+    window.open(`pelicula.html?id=${peliculaId}`, '_blank');
+}
+
+// ARROW FUNCTION (tu código existente)
 arrows.forEach((arrow, i) => {
     let clickCounter = 0;
-    const maxClicks = 3; // Máximo de clicks antes de resetear
+    const maxClicks = 3;
 
     arrow.addEventListener("click", () => {
         const movieList = movieLists[i];
@@ -54,25 +86,25 @@ arrows.forEach((arrow, i) => {
         clickCounter++;
         
         if (clickCounter <= maxClicks) {
-            // Mover hacia la izquierda: -300px por click
             movieList.style.transform = `translateX(${-300 * clickCounter}px)`;
         } else {
-            // Resetear a la posición inicial
             movieList.style.transform = `translateX(0px)`;
             clickCounter = 0;
         }
     });
 });
 
-// TOGGLE - ESTE ESTÁ BIEN
+// TOGGLE
 const ball = document.querySelector(".toggle-ball");
 const items = document.querySelectorAll(
     ".container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
 );
 
-ball.addEventListener("click", () => {
-    items.forEach((item) => {
-        item.classList.toggle("active");
+if (ball) {
+    ball.addEventListener("click", () => {
+        items.forEach((item) => {
+            item.classList.toggle("active");
+        });
+        ball.classList.toggle("active");
     });
-    ball.classList.toggle("active");
-});
+}

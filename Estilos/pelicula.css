@@ -1,0 +1,123 @@
+.pelicula-container {
+    background-color: #151515;
+    min-height: 100vh;
+    color: white;
+    padding: 50px;
+}
+
+.pelicula-header {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.pelicula-poster img {
+    width: 300px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.pelicula-info h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #4dbf00;
+}
+
+.pelicula-meta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.pelicula-meta span {
+    background-color: #333;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.pelicula-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 600px;
+}
+
+.pelicula-director {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.ver-button, .favorito-button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+}
+
+.ver-button {
+    background-color: #4dbf00;
+    color: white;
+}
+
+.favorito-button {
+    background-color: #333;
+    color: white;
+}
+
+.ver-button:hover {
+    background-color: #3da000;
+    transform: translateY(-2px);
+}
+
+.favorito-button:hover {
+    background-color: #444;
+    transform: translateY(-2px);
+}
+
+.pelicula-detalles {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.pelicula-detalles h2 {
+    color: #4dbf00;
+    margin-bottom: 20px;
+}
+
+.detalles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.detalle-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pelicula-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .pelicula-poster img {
+        width: 250px;
+        height: 375px;
+    }
+    
+    .pelicula-info h1 {
+        font-size: 2rem;
+    }
+}

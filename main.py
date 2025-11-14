@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from api import peliculas
+from api.peliculas import router as peliculas_router
+
 import os
 
 app = FastAPI()
@@ -15,7 +16,7 @@ app.mount("/Scripts", StaticFiles(directory="Scripts"), name="Scripts")
 def read_root():
     return FileResponse(os.path.join("index.html"))
 
-app.include_router(peliculas.router)
+app.include_router(peliculas_router)
 
 @app.get("/{file_path:path}")
 def static_files(file_path: str):
