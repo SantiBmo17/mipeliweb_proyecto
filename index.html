@@ -12,18 +12,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <title>Tu Movie.com</title>
 </head>
 
 <body>
     <div class="navbar">
         <div class="navbar-container">
-            
             <div class="logo-container">
                 <h1 class="logo">TuMovie.com</h1>
             </div>
-
             <div class="menu-container">
                 <ul class="menu-list">
                     <li class="menu-list-item active">Home</li>
@@ -49,6 +46,7 @@
         </div>
     </div>
     <div class="sidebar">
+        <i class="left-menu-icon fas fa-search" id="searchIcon"></i>
         <i class="left-menu-icon fas fa-home"></i>
         <i class="left-menu-icon fas fa-users"></i>
         <i class="left-menu-icon fas fa-bookmark"></i>
@@ -57,8 +55,8 @@
         <i class="left-menu-icon fas fa-shopping-cart"></i>
     </div>
 
-    <div id="SearchIcon" class="Search-container hidde">
-        <input type="text" id="SearchInput" placeholder="Buscar Pelicula...">
+    <div id="searchContainer" class="Search-container hidde">
+        <input type="text" id="searchInput" placeholder="Buscar Pelicula...">
         <button id="searchButton">🔍</button>
     </div>
 
@@ -70,7 +68,7 @@
                 style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('/Multimedia/img/f-t-1.png');">
                 <img class="featured-title" src="/Multimedia/img/f-t-1.png" alt="">
                 <p class="featured-desc">Un esclavo liberado se une a un cazarrecompensas alemán para rescatar a su esposa de un cruel terrateniente del sur de EE. UU. Una historia de venganza, justicia y libertad dirigida por Quentin Tarantino.</p>
-                <button class="featured-button">VER</button>
+                <button class="featured-button" data-pelicula-id="1" onclick="window.location.href='pelicula.html?id=1'">VER</button>
             </div>
             <div class="movie-list-container">
                 <h1 class="movie-list-title">ULTIMAS NOVEDADES</h1>
@@ -80,31 +78,31 @@
                             <img class="movie-list-item-img" src="/Multimedia/img/1.jpeg" alt="">
                             <span class="movie-list-item-title">Her</span>
                             <p class="movie-list-item-desc">Un esclavo liberado se une a un cazarrecompensas alemán para rescatar a su esposa de un cruel terrateniente del sur de EE. UU.</p>
-                            <button class="movie-list-item-button">VER</button>
+                            <button class="movie-list-item-button" data-pelicula-id="3" onclick="window.location.href='pelicula.html?id=3'">VER</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="/Multimedia/img/2.jpeg" alt="">
                             <span class="movie-list-item-title">Star Wars</span>
                             <p class="movie-list-item-desc">Un joven granjero descubre su destino como Jedi y se une a la rebelión para derrotar al Imperio Galáctico.</p>
-                            <button class="movie-list-item-button">VER</button>
+                            <button class="movie-list-item-button" data-pelicula-id="4" onclick="window.location.href='pelicula.html?id=4'">VER</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="/Multimedia/img/3.jpg" alt="">
                             <span class="movie-list-item-title">Storm</span>
                             <p class="movie-list-item-desc">Una intensa historia de supervivencia donde una tormenta imparable pone a prueba los límites humanos.</p>
-                            <button class="movie-list-item-button">VER</button>
+                            <button class="movie-list-item-button" data-pelicula-id="5" onclick="window.location.href='pelicula.html?id=5'">VER</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="/Multimedia/img/4.jpg" alt="">
                             <span class="movie-list-item-title">1917</span>
                             <p class="movie-list-item-desc">Dos soldados británicos cruzan territorio enemigo para entregar un mensaje que podría salvar cientos de vidas.</p>
-                            <button class="movie-list-item-button">VER</button>
+                            <button class="movie-list-item-button" data-pelicula-id="2" onclick="window.location.href='pelicula.html?id=2'">VER</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="/Multimedia/img/5.jpg" alt="">
                             <span class="movie-list-item-title">Avengers</span>
                             <p class="movie-list-item-desc">Los héroes más poderosos de la Tierra se unen para detener una invasión alienígena liderada por Loki.</p>
-                            <button class="movie-list-item-button">VER</button>
+                            <button class="movie-list-item-button" data-pelicula-id="6" onclick="window.location.href='pelicula.html?id=6'">VER</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="/Multimedia/img/6.jpg" alt="">
@@ -185,7 +183,7 @@
                 style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('/Multimedia/img/f-2.jpg');">
                 <img class="featured-title" src="/Multimedia/img/f-t-2.png" alt="">
                 <p class="featured-desc">En el pequeño pueblo de Winden, la desaparición de dos niños desata un complejo entramado de secretos familiares, viajes en el tiempo y universos paralelos, poniendo al descubierto el pasado, presente y futuro de cuatro generaciones.</p>
-                <button class="featured-button">VER</button>
+                <button class="featured-button" data-pelicula-id="1" onclick="window.location.href='pelicula.html?id=1'">VER</button>
             </div>
             <div class="movie-list-container">
                 <h1 class="movie-list-title">TAQUILLERAS</h1>
@@ -303,7 +301,7 @@
             </div>
         </div>
     </div>
-    <script src="Scripts/app.js"></script>
+    <script src="/Scripts/app.js"></script>
 </body>
 
 </html>
