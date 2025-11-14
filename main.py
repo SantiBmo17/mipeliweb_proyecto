@@ -1,12 +1,8 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-<<<<<<< HEAD
 from api.peliculas import router as peliculas_router
-
-=======
 from api import peliculas, login, usuarios   # ← AGREGADO
->>>>>>> df7180997dcea2756b8cac623abe7ddb2c4e107a
 import os
 
 app = FastAPI(title="TuMovie API", version="1.0")
@@ -25,16 +21,15 @@ app.mount("/Scripts", StaticFiles(directory="Scripts"), name="Scripts")
 def read_root():
     return FileResponse("index.html")
 
-<<<<<<< HEAD
 app.include_router(peliculas_router)
-=======
+
 # ---------------------------
 #     RUTAS API
 # ---------------------------
 app.include_router(peliculas.router)
 app.include_router(login.router)
 app.include_router(usuarios.router)   # ← AGREGADO
->>>>>>> df7180997dcea2756b8cac623abe7ddb2c4e107a
+
 
 # ---------------------------
 #  SERVIR ARCHIVOS HTML
