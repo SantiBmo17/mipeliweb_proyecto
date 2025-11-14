@@ -1,47 +1,77 @@
-//const btn = document.getElementById("btn");
-const containter = document.querySelector(".container");
-const btnSingIn = document.getElementById("btn-sing-in")
-const btnSingUp = document.getElementById("btn-sing-up")
+// Cambiar entre login y registro
+const container = document.getElementById("container");
+const btnShowRegister = document.getElementById("btn-show-register");
+const btnShowLogin = document.getElementById("btn-show-login");
 
-btnSingIn.addEventListener("click", ()=>{
-    containter.classList.remove("toggle");
-  });
-btnSingUp.addEventListener("click", ()=>{
-    containter.classList.add("toggle");
-  });
+btnShowRegister.addEventListener("click", () => {
+    container.classList.add("show-register");
+});
 
-  const arrows = document.querySelectorAll(".arrow");
-const movieLists = document.querySelectorAll(".movie-list");
+btnShowLogin.addEventListener("click", () => {
+    container.classList.remove("show-register");
+});
 
-arrows.forEach((arrow, i) => {
-  const itemNumber = movieLists[i].querySelectorAll("img").length;
-  let clickCounter = 0;
-  arrow.addEventListener("click", () => {
-    const ratio = Math.floor(window.innerWidth / 270);
-    clickCounter++;
-    if (itemNumber - (4 + clickCounter) + (4 - ratio) >= 0) {
-      movieLists[i].style.transform = `translateX(${
-        movieLists[i].computedStyleMap().get("transform")[0].x.value - 300
-      }px)`;
-    } else {
-      movieLists[i].style.transform = "translateX(0)";
-      clickCounter = 0;
+
+// -----------------------------
+// LOGIN
+// -----------------------------
+async function loginUser() {
+    const email = document.getElementById("email_login").value.trim();
+    const password = document.getElementById("pass_login").value.trim();
+
+    if (!email || !password) {
+        alert("Por favor ingrese el correo y la contraseña.");
+        return;
     }
-  });
 
-  console.log(Math.floor(window.innerWidth / 270));
-});
+    const datos = { email, password };
 
-//TOGGLE
+    const response = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datos)
+    });
 
-const ball = document.querySelector(".toggle-ball");
-const items = document.querySelectorAll(
-  ".container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
-);
+    const result = await response.json();
 
-ball.addEventListener("click", () => {
-  items.forEach((item) => {
-    item.classList.toggle("active");
-  });
-  ball.classList.toggle("active");
-});
+    if (result.status === "ok") {
+        alert("Bienvenido " + result.email);
+        localStorage.setItem("usuario", JSON.stringify(result));
+        window.location.href = "/index.html";
+    } else {
+        alert(result.msg || "Credenciales incorrectas");
+    }
+}
+
+
+
+// -----------------------------
+// REGISTRO
+// -----------------------------
+async function registrarUser() {
+    const nombre = document.getElementById("nombre_reg").value.trim();
+    const email = document.getElementById("email_reg").value.trim();
+    const password = document.getElementById("pass_reg").value.trim();
+
+    if (!nombre || !email || !password) {
+        alert("Por favor complete todos los campos");
+        return;
+    }
+
+    const datos = { nombre, email, password };
+
+    const response = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datos)
+    });
+
+    const result = await response.json();
+
+    if (result.status === "ok") {
+        alert("Usuario registrado correctamente. Ahora puedes iniciar sesión.");
+        container.classList.remove("show-register");
+    } else {
+        alert(result.msg || "Error al registrar usuario");
+    }
+}

@@ -1,12 +1,25 @@
 const arrows = document.querySelectorAll(".arrow");
 const movieLists = document.querySelectorAll(".movie-list");
 
-const searchIcon = document.getElementById("searchIcon");
-const searchContainer = document.getElementById("searchContainer");
+// === BOTÓN LOGOUT ===
+const btnLogout = document.getElementById("btnLogout");
+
+if (btnLogout) {
+  btnLogout.addEventListener("click", () => {
+    localStorage.removeItem("usuario");
+    alert("Sesión cerrada");
+    window.location.href = "/login.html";
+  });
+}
+
+// ===========================
+//  BUSCADOR
+// ===========================
+
+const searchIcon = document.getElementById("SearchIcon");
+const searchContainer = document.getElementById("SearchIcon");
 const searchButton = document.getElementById("searchButton");
 const resultsDiv = document.getElementById("results");
-
-//BUSCADOR
 
 searchIcon.addEventListener("click", () => {
   searchContainer.classList.toggle("hidden");
@@ -16,7 +29,7 @@ searchIcon.addEventListener("click", () => {
 searchButton.addEventListener("click", buscarPelicula);
 
 async function buscarPelicula() {
-  const query = document.getElementById("searchInput").value;
+  const query = document.getElementById("SearchInput").value;
   if (!query) return alert("Escribe algo para buscar");
 
   const response = await fetch(`http://127.0.0.1:8000/api/peliculas?titulo=${encodeURIComponent(query)}`);
@@ -35,14 +48,16 @@ async function buscarPelicula() {
   }
 }
 
-//ARROW
+// ===========================
+//  ARROWS
+// ===========================
+
 arrows.forEach((arrow, i) => {
   const itemNumber = movieLists[i].querySelectorAll("img").length;
   let clickCounter = 0;
   arrow.addEventListener("click", () => {
-    //const ratio = Math.floor(window.innerWidth / 270);
     clickCounter++;
-    if (itemNumber - (4 + clickCounter) + (4 - ratio) >= 0) {
+    if (itemNumber - (4 + clickCounter) >= 0) {
       movieLists[i].style.transform = `translateX(${
         movieLists[i].computedStyleMap().get("transform")[0].x.value - 300
       }px)`;
@@ -55,7 +70,9 @@ arrows.forEach((arrow, i) => {
   console.log(Math.floor(window.innerWidth / 270));
 });
 
-//TOGGLE
+// ===========================
+//  TOGGLE
+// ===========================
 
 const ball = document.querySelector(".toggle-ball");
 const items = document.querySelectorAll(
@@ -68,3 +85,4 @@ ball.addEventListener("click", () => {
   });
   ball.classList.toggle("active");
 });
+
