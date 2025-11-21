@@ -13,19 +13,54 @@
     <div class="navbar">
         <div class="navbar-container">
             <div class="logo-container">
-                <h1 class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">TuMovie.com</a></h1>
+                <h1 class="logo">TuMovie.com</h1>
             </div>
             <div class="menu-container">
                 <ul class="menu-list">
-                    <li class="menu-list-item"><a href="index.html">Home</a></li>
-                    <li class="menu-list-item"><a href="index.html">Peliculas</a></li>
-                    <li class="menu-list-item"><a href="index.html">Series</a></li>
-                    <li class="menu-list-item"><a href="index.html">Populares</a></li>
-                    <li class="menu-list-item"><a href="index.html">Nosotros</a></li>
+                    <li class="menu-list-item active"><a href="/index.html">Home</a></li>                    
+                    <li class="menu-list-item"><a href="/index.html">Peliculas</a></li>
+                    <li class="menu-list-item"><a href="/index.html">Series</a></li>
+                    <li class="menu-list-item"><a href="/index.html">Populares</a></li>
+                    <li class="menu-list-item"><a href="/index.html">Nosotros</a></li>
                 </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="/Multimedia/img/profile.jpg" href="/login.html" alt="">
+                <div class="profile-text-container">
+                    <span class="profile-text" href>Perfil</span>
+                    
+                </div>
+                <div class="toggle">
+                    <i class="fas fa-moon toggle-icon"></i>
+                    <i class="fas fa-sun toggle-icon"></i>
+                    <div class="toggle-ball"></div>
+                </div>
+                <!-- 👇 BOTÓN AGREGADO, NO SE QUITÓ NADA -->
+                <button id="btnLogout" class="logout-btn">Cerrar sesión</button>
+                <!-- 👆 SOLO ESTO ES NUEVO -->
             </div>
         </div>
     </div>
+    </div>
+
+    <div class="sidebar">
+        <a href="/index.html" class="menu-item">
+        <i class="left-menu-icon fas fa-home"></i>  
+        </a>
+        
+        <i class="left-menu-icon fas fa-users"></i>
+        <i class="left-menu-icon fas fa-bookmark"></i>
+        <i class="left-menu-icon fas fa-tv"></i>
+        <i class="left-menu-icon fas fa-hourglass-start"></i>
+        <i class="left-menu-icon fas fa-shopping-cart"></i>
+    </div>
+
+    <div id="searchContainer" class="Search-container hidde">
+        <input type="text" id="searchInput" placeholder="Buscar Pelicula...">
+        <button id="searchButton">🔍</button>
+    </div>
+
+
 
     <div class="pelicula-container">
         <div class="pelicula-header">
@@ -78,7 +113,7 @@
     </div>
 
     
-    <script src="pelicula.js"></script>
+    <script src="/Scripts/pelicula.js"></script>
 
 </body>
 </html>

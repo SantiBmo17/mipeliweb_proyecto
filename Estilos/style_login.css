@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap');
-
+/* GLOBAL */
 * {
     margin: 0;
     padding: 0;
@@ -13,19 +12,141 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #080808;
+    background-color: #000000;
 }
 
+/* CONTENEDOR PRINCIPAL */
 .container {
-    background: #ffffff;
-    width: 900px;
+    width: 800px;
     height: 500px;
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
     display: flex;
-    box-shadow: 0 0 15px rgba(255,0,0,0.4);
+    position: relative;
+    border-radius: 15px;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
 }
+
+/* ESTILOS DE FORMULARIO (BASE) */
+.form-container {
+    /* Ocupa el 100% del espacio horizontal para animar */
+    width: 100%; 
+    height: 100%; 
+    position: absolute; 
+    overflow: hidden; 
+    transition: transform 0.5s ease-in; 
+}
+
+.form-container form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+
+/* REDES SOCIALES */
+.social-icons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.social-icons ion-icon {
+    border: 1px solid #c9cccb;
+    font-size: 18px;
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.form-container span {
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+/* CAMPOS DE ENTRADA */
+.input-field {
+    width: 300px;
+    height: 40px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 0 15px;
+    background-color: #EEEEEE;
+    border-radius: 4px;
+}
+
+.input-field input {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+}
+
+.form-container a {
+    color: black;
+    font-size: 14px;
+    margin-bottom: 13px;
+    margin-top: 5px;
+}
+
+/* BOTONES PRINCIPALES */
+.btn {
+    width: 170px;
+    height: 45px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: #6c0606;
+    color: white;
+    transition: background-color 0.3s ease; 
+}
+.btn:hover {
+    background-color: #000000;
+}
+
+.btn-outline {
+    border: 2px solid white;
+    background-color: transparent;
+    width: 170px;
+    height: 45px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+.btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.overlay-left {
+    transform: translateX(0%);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+/* AL ACTIVAR 'show-register' */
+.container.show-register .overlay-left {
+    /* Muestra el panel izquierdo (¡Bienvenido!) */
+    transform: translateX(0);
+}
+
 
 /* FORM CONTAINERS */
 .form-container {
@@ -62,10 +183,13 @@ body {
 /* PANEL */
 .overlay-container {
     position: absolute;
-    right: 0;
     width: 50%;
     height: 100%;
+    right: 0; 
     overflow: hidden;
+    z-index: 100; 
+    transform: translateX(0); 
+    transition: transform 1s ease-in-out;
 }
 
 .overlay {
@@ -76,6 +200,17 @@ body {
     position: absolute;
     left: -100%;
     transition: transform 0.6s ease-in-out;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: #FFFFFF;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.5s ease-in-out;
+
 }
 
 .container.show-register .overlay {
@@ -83,15 +218,18 @@ body {
 }
 
 .overlay-panel {
-    position: absolute;
+       position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 50px;
+    justify-content: center; 
+    gap: 20px;
+    padding: 0 50px;
+    color: white;
     text-align: center;
     height: 100%;
     width: 50%;
+    transition: transform 0.5s ease-in-out;
 }
 
 .overlay-left {
@@ -100,6 +238,16 @@ body {
 
 .overlay-right {
     right: 0;
+}
+
+.overlay-panel h3{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.overlay-panel h2{
+    font-size: 30px;
+    margin-bottom: 20px;
 }
 
 /* FORM STYLES */
@@ -126,14 +274,7 @@ form {
     gap: 10px;
 }
 
-.btn {
-    background: #d40000;
-    border: none;
-    color: white;
-    padding: 12px;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 
 .btn-outline {
     background: transparent;

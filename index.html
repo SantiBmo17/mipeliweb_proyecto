@@ -5,11 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Tu Movie.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Estilos/style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="/Estilos/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="icon" href="/Multimedia/iconos/icon_page_web.ico" type="image/x-icon">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>Tu Movie.com</title>
@@ -23,31 +22,36 @@
             </div>
             <div class="menu-container">
                 <ul class="menu-list">
-                    <li class="menu-list-item active">Home</li>
-                    <li class="menu-list-item">Peliculas</li>
-                    <li class="menu-list-item">Series</li>
-                    <li class="menu-list-item">Populares</li>
-                    <li class="menu-list-item">Nosotros</li>
-
+                    <li class="menu-list-item active"><a href="/index.html">Home</a></li>                    
+                    <li class="menu-list-item"><a href="/index.html">Peliculas</a></li>
+                    <li class="menu-list-item"><a href="/index.html">Series</a></li>
+                    <li class="menu-list-item"><a href="/index.html">Populares</a></li>
+                    <li class="menu-list-item"><a href="/index.html">Nosotros</a></li>
                 </ul>
             </div>
             <div class="profile-container">
-                <img class="profile-picture" src="/Multimedia/img/profile.jpg" href="login.html" alt="">
+                <img class="profile-picture" src="/Multimedia/img/profile.jpg" href="/login.html" alt="">
                 <div class="profile-text-container">
-                    <span class="profile-text" href>Perfil</span>
-                    <i class="fas fa-caret-down"></i>
+                    <span class="profile-text"><a href="/login.html">Perfil</a></span>
+                    
                 </div>
                 <div class="toggle">
                     <i class="fas fa-moon toggle-icon"></i>
                     <i class="fas fa-sun toggle-icon"></i>
                     <div class="toggle-ball"></div>
                 </div>
+                <!-- 👇 BOTÓN AGREGADO, NO SE QUITÓ NADA -->
+                <button id="btnLogout" class="logout-btn">Cerrar sesión</button>
+                <!-- 👆 SOLO ESTO ES NUEVO -->
             </div>
         </div>
     </div>
+    </div>
     <div class="sidebar">
+        <a href="/index.html" class="menu-item">
+        <i class="left-menu-icon fas fa-home"></i>  
+        </a>
         <i class="left-menu-icon fas fa-search" id="searchIcon"></i>
-        <i class="left-menu-icon fas fa-home"></i>
         <i class="left-menu-icon fas fa-users"></i>
         <i class="left-menu-icon fas fa-bookmark"></i>
         <i class="left-menu-icon fas fa-tv"></i>
@@ -105,11 +109,10 @@
                             <button class="movie-list-item-button" data-pelicula-id="6" onclick="window.location.href='pelicula.html?id=6'">VER</button>
                         </div>
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="/Multimedia/img/6.jpg" alt="">
-                            <span class="movie-list-item-title">Movie 2</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">VER</button>
+                            <img class="movie-list-item-img" src="/Multimedia/img/3.jpg" alt="">
+                            <span class="movie-list-item-title">Storm</span>
+                            <p class="movie-list-item-desc">Una intensa historia de supervivencia donde una tormenta imparable pone a prueba los límites humanos.</p>
+                            <button class="movie-list-item-button" data-pelicula-id="5" onclick="window.location.href='pelicula.html?id=5'">VER</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="/Multimedia/img/7.jpg" alt="">
@@ -127,25 +130,21 @@
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="/Multimedia/img/8.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">VER</button>
+                            <img class="movie-list-item-img" src="/Multimedia/img/3.jpg" alt="">
+                            <span class="movie-list-item-title">Storm</span>
+                            <p class="movie-list-item-desc">Una intensa historia de supervivencia donde una tormenta imparable pone a prueba los límites humanos.</p>
+                            <button class="movie-list-item-button" data-pelicula-id="5" onclick="window.location.href='pelicula.html?id=5'">VER</button>
                         </div>
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="/Multimedia/img/9.jpg" alt="">
+                            <img class="movie-list-item-img" src="/Multimedia/img/1.jpeg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">VER</button>
-                        </div>
+                            <p class="movie-list-item-desc">Un esclavo liberado se une a un cazarrecompensas alemán para rescatar a su esposa de un cruel terrateniente del sur de EE. UU.</p>
+                            <button class="movie-list-item-button" data-pelicula-id="3" onclick="window.location.href='pelicula.html?id=3'">VER</button>
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="/Multimedia/img/10.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">VER</button>
+                            <img class="movie-list-item-img" src="/Multimedia/img/5.jpg" alt="">
+                            <span class="movie-list-item-title">Avengers</span>
+                            <p class="movie-list-item-desc">Los héroes más poderosos de la Tierra se unen para detener una invasión alienígena liderada por Loki.</p>
+                            <button class="movie-list-item-button" data-pelicula-id="6" onclick="window.location.href='pelicula.html?id=6'">VER</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="/Multimedia/img/11.jpg" alt="">
@@ -171,9 +170,8 @@
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="/Multimedia/img/1.jpeg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">VER</button>
+                            <p class="movie-list-item-desc">Un esclavo liberado se une a un cazarrecompensas alemán para rescatar a su esposa de un cruel terrateniente del sur de EE. UU.</p>
+                            <button class="movie-list-item-button" data-pelicula-id="3" onclick="window.location.href='pelicula.html?id=3'">VER</button>
                         </div>
                     </div>
                     <i class="fas fa-chevron-right arrow"></i>
@@ -195,20 +193,17 @@
                             <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                                 hic fugit similique accusantium.</p>
                             <button class="movie-list-item-button">VER</button>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="/Multimedia/img/5.jpg" alt="">
+                            <span class="movie-list-item-title">Avengers</span>
+                            <p class="movie-list-item-desc">Los héroes más poderosos de la Tierra se unen para detener una invasión alienígena liderada por Loki.</p>
+                            <button class="movie-list-item-button" data-pelicula-id="6" onclick="window.location.href='pelicula.html?id=6'">VER</button>
                         </div>
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="/Multimedia/img/2.jpeg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">VER</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="/Multimedia/img/15.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">VER</button>
+                            <img class="movie-list-item-img" src="/Multimedia/img/3.jpg" alt="">
+                            <span class="movie-list-item-title">Storm</span>
+                            <p class="movie-list-item-desc">Una intensa historia de supervivencia donde una tormenta imparable pone a prueba los límites humanos.</p>
+                            <button class="movie-list-item-button" data-pelicula-id="5" onclick="window.location.href='pelicula.html?id=5'">VER</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="/Multimedia/img/3.jpg" alt="">

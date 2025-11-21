@@ -2,7 +2,7 @@ const arrows = document.querySelectorAll(".arrow");
 const movieLists = document.querySelectorAll(".movie-list");
 
 // BUSCADOR
-const searchIcon = document.getElementById("searchIcon");
+//const searchIcon = document.getElementById("searchIcon");
 const searchContainer = document.getElementById("SearchIcon");
 const searchButton = document.getElementById("searchButton");
 const resultsDiv = document.getElementById("results");
@@ -20,7 +20,7 @@ if (searchButton) {
 }
 
 async function buscarPelicula() {
-    const searchInput = document.getElementById("SearchInput");    
+    const searchInput = document.getElementById("searchInput");    
     const query = searchInput.value.trim();
 
     if (!query) {
@@ -108,3 +108,60 @@ if (ball) {
         ball.classList.toggle("active");
     });
 }
+
+// BOTONES VER - Redirigir a página de detalles
+function configurarBotonesVer() {
+    console.log("Configurando botones VER...");
+    
+    // Botones de películas en las listas y featured
+    const verButtons = document.querySelectorAll(".movie-list-item-button, .featured-button");
+    
+    console.log("Total de botones VER encontrados:", verButtons.length);
+    
+    verButtons.forEach((button, index) => {
+        const peliculaId = button.getAttribute("data-pelicula-id");
+        console.log(`Botón ${index + 1}:`, peliculaId ? `ID=${peliculaId}` : "SIN ID");
+        
+        // Remover cualquier listener anterior
+        const nuevoButton = button.cloneNode(true);
+        button.parentNode.replaceChild(nuevoButton, button);
+        
+        // Agregar nuevo listener
+        nuevoButton.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const id = this.getAttribute("data-pelicula-id");
+            console.log("CLICK en botón VER - ID:", id);
+            
+            if (id) {
+                const url = `pelicula.html?id=${id}`;
+                console.log("Redirigiendo a:", url);
+                window.location.href = url;
+            } else {
+                console.warn("Este botón no tiene data-pelicula-id");
+                alert("Esta película no tiene información disponible");
+            }
+        });
+    });
+    
+    console.log("Botones VER configurados");
+}
+
+// Ejecutar cuando el DOM esté completamente cargado
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log("DOM cargado, configurando botones...");
+        configurarBotonesVer();
+    });
+} else {
+    // DOM ya está listo
+    console.log("DOM ya listo, configurando botones...");
+    configurarBotonesVer();
+}
+
+// También ejecutar después de un pequeño delay por si acaso
+setTimeout(function() {
+    console.log("Reconfigurando botones después de delay...");
+    configurarBotonesVer();
+}, 500);

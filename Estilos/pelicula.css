@@ -453,3 +453,24 @@
         padding: 6px 12px;
     }
 }
+
+.menu-list-item {
+  margin-right: 30px;
+}
+.menu-list-item a {
+  display: block;
+  color: indianred;
+  text-decoration: none;
+}
+
+.logout-btn {
+ background-color: #c11818;
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  margin-left: 20px;
+}

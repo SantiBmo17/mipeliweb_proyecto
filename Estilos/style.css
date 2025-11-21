@@ -12,6 +12,7 @@ body {
   background-color: black;
   position: sticky;
   top: 0;
+  z-index: 1000;
 }
 
 .navbar-container {
@@ -21,6 +22,7 @@ body {
   height: 100%;
   color: white;
   font-family: "Sen", sans-serif;
+  z-index: 1000;
 }
 
 .logo-container {
@@ -44,20 +46,31 @@ body {
 .menu-list-item {
   margin-right: 30px;
 }
+.menu-list-item a {
+  display: block;
+  color: indianred;
+  text-decoration: none;
+}
 
 .menu-list-item.active {
   font-weight: bold;
+  text-decoration: none;
 }
 .profile-container {
   flex: 2;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  
+  z-index: 1000;
+}
+
+.profile-container a {
+  color: indianred;
+  text-decoration: none;
 }
 
 .profile-text-container {
-  margin: 0 20px;
+  margin: 0 15px;
   
 }
 
@@ -66,6 +79,7 @@ body {
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
+  
 }
 
 .toggle {
@@ -236,12 +250,12 @@ body {
   color: lightgray;
   opacity: 0.5;
   cursor: pointer;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .arrow:hover{
   opacity: 1;
-  color: #e50914;
+  color: #fb030fda;
 }
 
 .container.active {
@@ -284,7 +298,7 @@ body {
 .Search-container {
   position: fixed;
   top: 2px;
-  left: 950px;
+  left: 800px;
   display: flex;
   align-items: center;
   background: rgba(20, 20, 20, 0.9);
@@ -300,7 +314,7 @@ body {
   border-bottom: 2px solid #fff;
   color: white;
   outline: none;
-  width: 200px;
+  width: 300px;
 }
 
 .Search-container button {
@@ -340,6 +354,7 @@ body {
   z-index: 1000;
   border: 1px solid #333;
   box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+  visibility: unset;
 }
 
 .result-item {
@@ -394,4 +409,16 @@ body {
 
 .search-icon-container i:hover {
     color: #4dbf00;
+}
+
+.logout-btn {
+ background-color: #c11818;
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  margin-left: 20px;
 }
