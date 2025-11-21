@@ -1,26 +1,77 @@
+// ==============================================
+// DECLARACIONES GLOBALES
+// ==============================================
 const arrows = document.querySelectorAll(".arrow");
 const movieLists = document.querySelectorAll(".movie-list");
 
-// BUSCADOR
-//const searchIcon = document.getElementById("searchIcon");
-const searchContainer = document.getElementById("SearchIcon");
+// Buscar elementos clave del DOM para evitar null errors
+// Nota: Las declaraciones deben coincidir con los IDs en el HTML.
+const btnLogout = document.getElementById("btnLogout");
+const searchIcon = document.getElementById("searchIcon"); // Asumido para el toggle del buscador
+const searchContainer = document.getElementById("searchContainer"); // Asumido para el div contenedor del input/boton
 const searchButton = document.getElementById("searchButton");
 const resultsDiv = document.getElementById("results");
 
-// Solo ejecutar si los elementos existen
-if (searchIcon && searchContainer) {
-    searchIcon.addEventListener("click", () => {
-        searchContainer.classList.toggle("hidden");
-        if (resultsDiv) resultsDiv.innerHTML = "";
-    });
-}
+// ==============================================
+// INICIALIZACIÓN (DOMContentLoaded)
+// ==============================================
 
-if (searchButton) {
-    searchButton.addEventListener("click", buscarPelicula);
-}
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- 1. CERRAR SESIÓN (LOGOUT) ---
+    // El botón se declara de nuevo aquí para asegurar su existencia si el script no está al final del body
+    // Nota: El botón ya fue declarado globalmente, pero esta es una capa extra de seguridad.
+    if (btnLogout) {
+        btnLogout.addEventListener("click", () => {
+            localStorage.removeItem("usuario");
+            alert("Sesión cerrada");
+            window.location.href = "/login.html";
+        });
+    }
+
+
+    // --- 2. BUSCADOR ---
+    
+    // Configuración para mostrar/ocultar el buscador (Icono de Lupa)
+    if (searchIcon && searchContainer) {
+        searchIcon.addEventListener("click", () => {
+            searchContainer.classList.toggle("hidden");
+            // Limpiar resultados al ocultar
+            if (resultsDiv) resultsDiv.innerHTML = ""; 
+        });
+    }
+
+    // Configuración del botón de búsqueda
+    if (searchButton) {
+        // Aseguramos que la función se ejecuta al hacer clic
+        searchButton.addEventListener("click", buscarPelicula);
+    }
+    
+    // --- 3. CONFIGURAR BOTONES VER ---
+    configurarBotonesVer();
+
+    // Reconfiguración después de un pequeño delay
+    setTimeout(function() {
+        console.log("Reconfigurando botones VER después de delay...");
+        configurarBotonesVer();
+    }, 500);
+});
+
+// ==============================================
+// FUNCIONES
+// ==============================================
 
 async function buscarPelicula() {
-    const searchInput = document.getElementById("searchInput");    
+    // Corregido: Obtenemos el input DENTRO de la función para asegurar que el DOM esté listo
+    const searchInput = document.getElementById("searchInput"); 
+    
+    // Añadimos una verificación de nulidad para evitar el TypeError
+    if (!searchInput) {
+        console.error("Error: El campo de búsqueda con ID 'searchInput' no fue encontrado.");
+        alert("Error interno: El campo de búsqueda no está disponible.");
+        return;
+    }
+    
     const query = searchInput.value.trim();
 
     if (!query) {
@@ -54,7 +105,7 @@ async function buscarPelicula() {
                         <br>
                         <small>${p.genero}</small>
                       </div>
-                        <button onclick="verDetalles(${p.id})" class="ver-detalle-btn">Ver Detalles</button>
+                      <button onclick="verDetalles(${p.id})" class="ver-detalle-btn">Ver Detalles</button>
                     `;
                     resultsDiv.appendChild(item);
                 });
@@ -69,13 +120,14 @@ async function buscarPelicula() {
     }
 }
 
+
 // Función para ver detalles 
 function verDetalles(peliculaId) {
     console.log("Abriendo detalles para pelicula ID:", peliculaId)
     window.open(`pelicula.html?id=${peliculaId}`, '_blank');
 }
 
-// ARROW FUNCTION (tu código existente)
+// ARROW FUNCTION (función de desplazamiento)
 arrows.forEach((arrow, i) => {
     let clickCounter = 0;
     const maxClicks = 3;
@@ -94,7 +146,7 @@ arrows.forEach((arrow, i) => {
     });
 });
 
-// TOGGLE
+// TOGGLE (Tema oscuro/claro)
 const ball = document.querySelector(".toggle-ball");
 const items = document.querySelectorAll(
     ".container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
@@ -113,16 +165,15 @@ if (ball) {
 function configurarBotonesVer() {
     console.log("Configurando botones VER...");
     
-    // Botones de películas en las listas y featured
     const verButtons = document.querySelectorAll(".movie-list-item-button, .featured-button");
     
     console.log("Total de botones VER encontrados:", verButtons.length);
     
     verButtons.forEach((button, index) => {
         const peliculaId = button.getAttribute("data-pelicula-id");
-        console.log(`Botón ${index + 1}:`, peliculaId ? `ID=${peliculaId}` : "SIN ID");
+        console.log(`Botón ${index + 1}:`, peliculaId ? `ID=${peliculaId}` : "SIN data-pelicula-id");
         
-        // Remover cualquier listener anterior
+        // Clonación para remover listeners antiguos
         const nuevoButton = button.cloneNode(true);
         button.parentNode.replaceChild(nuevoButton, button);
         
@@ -147,21 +198,3 @@ function configurarBotonesVer() {
     
     console.log("Botones VER configurados");
 }
-
-// Ejecutar cuando el DOM esté completamente cargado
-if (document.readyState === 'loading') {
-    document.addEventListener("DOMContentLoaded", function() {
-        console.log("DOM cargado, configurando botones...");
-        configurarBotonesVer();
-    });
-} else {
-    // DOM ya está listo
-    console.log("DOM ya listo, configurando botones...");
-    configurarBotonesVer();
-}
-
-// También ejecutar después de un pequeño delay por si acaso
-setTimeout(function() {
-    console.log("Reconfigurando botones después de delay...");
-    configurarBotonesVer();
-}, 500);

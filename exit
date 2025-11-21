@@ -1,0 +1,225 @@
+[33mcommit ae1d50485f75eb54c615293b67ac746d3c8d909b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Fri Nov 21 00:53:53 2025 -0500
+
+    Arreglo de estilos del login y conexion de varios botones en index y peliculas
+
+[33mcommit f3495c56b9050263ad023ed2ac62b9bb5e37899f[m
+Merge: 6e0eeba e6e2af4
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Thu Nov 20 21:59:09 2025 -0500
+
+    Merge branch 'master' of https://github.com/SantiBmo17/mipeliweb_proyecto
+
+[33mcommit e6e2af40b248bd3f62834247c6c6ca258564a2d4[m
+Author: duvangir <105751069+duvangir@users.noreply.github.com>
+Date:   Thu Nov 20 21:44:10 2025 -0500
+
+    descripcion de peliculas proyecto
+
+[33mcommit 6e0eeba536f5093ccbd2f799fd611bd0dd449810[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Thu Nov 20 18:49:30 2025 -0500
+
+    Agrego gitignore
+
+[33mcommit 1aa74956cd7e31fa5a36537163ec1568bf740f7b[m
+Author: duvangir <105751069+duvangir@users.noreply.github.com>
+Date:   Fri Nov 14 18:35:55 2025 -0500
+
+    Ver detalle de peliculas
+
+[33mcommit a104c2b145465909fbea94b72848d39fea7312f2[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Fri Nov 14 16:33:48 2025 -0500
+
+    update
+
+[33mcommit 293e315de2aeb00f4bca9ff5ca00eb994d2e4e0a[m
+Merge: 1a24fea df71809
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Fri Nov 14 16:30:34 2025 -0500
+
+    Merge branch 'master' of https://github.com/SantiBmo17/mipeliweb_proyecto
+
+[33mcommit 1a24fea8957f0291f647a21075b6c90d1bd9bb00[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Fri Nov 14 16:11:37 2025 -0500
+
+    Cambios
+
+[33mcommit df7180997dcea2756b8cac623abe7ddb2c4e107a[m
+Author: MauroRamire <maramirez341@ucatolica.edu.co>
+Date:   Fri Nov 14 15:49:05 2025 -0500
+
+    Subida completa del proyecto actualizado (login, registro y cierre de sesión)
+
+[33mcommit f68a621e1af8505170cfc9a340cb3ca58b932749[m
+Merge: 75a3b4e 127474d
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Fri Nov 14 15:02:35 2025 -0500
+
+    Merge branch 'master' of https://github.com/SantiBmo17/mipeliweb_proyecto
+
+[33mcommit 75a3b4e096fa727abb7d079260001007c7ec1cb2[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Fri Nov 14 15:02:14 2025 -0500
+
+    Cambios en buscador y actualizacion de archivos
+
+[33mcommit 127474d5e1dfccf8ea4850e045529fedaae7b0c0[m
+Author: Mauro Ramirez <maramirez41@ucatolica.edu.co>
+Date:   Fri Nov 14 14:51:10 2025 -0500
+
+    Update and rename master_proyectopeliculaweb.yml to proyectoPeliculalweb.yml.bak
+
+[33mcommit 2aa64c03e6b0271c75c78ff34e0d5778d726fba8[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Thu Nov 13 15:15:41 2025 -0500
+
+    Actualizacion de JS para funcionamiento de Arrow de peliculas y search
+
+[33mcommit f8f89414f65629ac8b96190f210748c0e651000c[m
+Author: Sala 6 <sala6@FI-LabSistemas.ucatolica.loc>
+Date:   Mon Nov 10 17:55:47 2025 -0500
+
+    Creacion de api rest y pruebas en postman
+
+[33mcommit 642beb393ff7c21dc5e3de51cb524da64edff44c[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Mon Oct 20 14:47:03 2025 -0500
+
+    devolviendo cambios
+
+[33mcommit 88f40d31fd7a95318b41f42d19bcf3e7f380c8b8[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Mon Oct 20 14:44:10 2025 -0500
+
+    update en botones
+
+[33mcommit 035db74247b15501fd50104d9f0e8bdf7bd299e6[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Mon Oct 20 14:29:15 2025 -0500
+
+    Cambio de informacion
+
+[33mcommit ec9b5779e75ae1a7f1ca2d790d255ec58d185aa2[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 23:09:48 2025 -0500
+
+    mas cambios
+
+[33mcommit 503bc163aa778bc5534e2bbf317be38d57254718[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 23:06:38 2025 -0500
+
+    pruebas con mensaje de error en log si no encuentra la carpeta multimedia
+
+[33mcommit 6b5be914e371a695528ca1b8447218bb6370dfe2[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 23:01:36 2025 -0500
+
+    pruebas en main para cargue de imagenes azure
+
+[33mcommit 41c3ef735236a9e1418da098df986b2aaeef5d98[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 22:51:50 2025 -0500
+
+    ajuste en url de imagenes para prueba en azure
+
+[33mcommit c6d2c55aac4a1eaeeb91fb7fcf07f218f9b0beef[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 22:38:04 2025 -0500
+
+    arreglo de mayusculas para que azure lo acepte
+
+[33mcommit 666bf17f18384a37a58d42ecfeaf7c2cf0ee8667[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 22:32:43 2025 -0500
+
+    correcciones
+
+[33mcommit 6cf0399e59b725e59e662178873e8bb0e4f0462b[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 22:18:24 2025 -0500
+
+    mas updates
+
+[33mcommit 42c66fcfcb07c03606bcb6d027e6098b82410bd4[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 22:00:57 2025 -0500
+
+    update ruta imagenes
+
+[33mcommit 3464456e571b2414ae87a64bcea2d810e5724da2[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 21:59:13 2025 -0500
+
+    correccion de ruta imagenes azure
+
+[33mcommit 56d4d7e9fa77ffb185116fa540133e7576790c9b[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 21:51:45 2025 -0500
+
+    update para pruebas azure
+
+[33mcommit a1de88d5f549f825c1ceb88925c52fb6df099bb3[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 21:46:45 2025 -0500
+
+    agregar pagina index peliculas
+
+[33mcommit e0a9693675e41bedfe8e1b8f089eb5cb4b55dccc[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 20:58:10 2025 -0500
+
+    cambios
+
+[33mcommit 14fad2d23b954db133d9550345ee9319d354ab77[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 20:48:35 2025 -0500
+
+    cambios para cargue
+
+[33mcommit d5b1e41a58723cb9b51350c7db2d05d551233280[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 20:33:00 2025 -0500
+
+    update de requirements guvicorn
+
+[33mcommit 53d8d2a588fb7f7756de2d3561a73a42b4330173[m
+Merge: 4818cbc 800efe0
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 20:27:32 2025 -0500
+
+    Merge branch 'master' of https://github.com/SantiBmo17/mipeliweb_proyecto
+
+[33mcommit 4818cbc98afcdf6173ffa1c55a0423838d03b386[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 20:26:10 2025 -0500
+
+    Proyecto listo para despliegue
+
+[33mcommit 694e27a4b47d2482661d49458caf2c6d227796b6[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 20:20:16 2025 -0500
+
+    Se carga fastapi y uvicorn para luego subir a azure
+
+[33mcommit 7b760740292911e328e6d306757d4c0b1fa843d3[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 20:06:19 2025 -0500
+
+    Cargue datos para subir a azure
+
+[33mcommit 800efe02825fc601155e7defbaefc7ba9a13a80c[m
+Author: Jaime Santiago Barahona Moreno <95191158+SantiBmo17@users.noreply.github.com>
+Date:   Sun Oct 19 19:34:11 2025 -0500
+
+    Add or update the Azure App Service build and deployment workflow config
+
+[33mcommit d05de32e644dc8c80a21b19765720993e7280e32[m
+Author: Jaime Santiago Barahona Moreno <santiagobarahona16@hotmail.com>
+Date:   Sun Oct 19 19:26:33 2025 -0500
+
+    Cargue de documentacion y codigo
