@@ -2,134 +2,100 @@
 const urlParams = new URLSearchParams(window.location.search);
 const peliculaId = urlParams.get('id');
 
-// Función para cargar los detalles de la película
+console.log('pelicula.html cargado, ID de la película:', peliculaId);
+
+// Cargar detalles al iniciar
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', cargarDetallesPelicula);
+} else {
+    cargarDetallesPelicula();
+}
+
 async function cargarDetallesPelicula() {
-    console.log('ID de película desde URL:', peliculaId);
-    
     if (!peliculaId) {
-        mostrarError('No se especificó un ID de película');
+        mostrarError('No se especificó un ID de película en la URL');
         return;
     }
 
+    const url = `http://127.0.0.1:8000/api/peliculas/${peliculaId}`;
+    console.log('Consultando API:', url);
+
     try {
-        const url = `http://127.0.0.1:8000/api/peliculas/${peliculaId}`;
-        console.log('Cargando película desde:', url);
-        
         const response = await fetch(url);
-        
+
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status} - ${response.statusText}`);
         }
-        
-        const pelicula = await response.json();
 
-        console.log('Película recibida:', pelicula);
+        const pelicula = await response.json();
+        console.log('Película recibida desde API:', pelicula);
 
         if (pelicula.error) {
             mostrarError(pelicula.error);
             return;
         }
 
-        // Mostrar la información de la película
         mostrarPelicula(pelicula);
     } catch (error) {
         console.error('Error al cargar la película:', error);
-        mostrarError(`Error al cargar la información de la película: ${error.message}`);
+        mostrarError(`Error al cargar la película: ${error.message}`);
     }
 }
 
-// Función para mostrar la información de la película
 function mostrarPelicula(pelicula) {
-    // Título
-    const tituloElement = document.getElementById('pelicula-titulo');
-    if (tituloElement) {
-        tituloElement.textContent = pelicula.titulo;
-    }
+    console.log('Mostrando película:', pelicula);
 
-    // Imagen del poster
-    const imagen = document.getElementById('pelicula-imagen');
-    if (imagen && pelicula.imagen) {
-        console.log('Actualizando imagen para:', pelicula.titulo, '| Ruta:', pelicula.imagen);
-        imagen.src = pelicula.imagen;
-        imagen.alt = `Poster de ${pelicula.titulo}`;
-    }
+    // ====== ELEMENTOS PRINCIPALES (coinciden con TU HTML) ======
+    const tituloElement = document.getElementById('peliculaTitulo');
+    if (tituloElement) tituloElement.textContent = pelicula.titulo || 'Sin título';
 
-    // Fondo del featured-content con la imagen
-    const hero = document.getElementById('pelicula-hero');
-    if (hero && pelicula.imagen) {
-        hero.style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(21,21,21,0.95)), url(${pelicula.imagen})`;
-    }
+    const anioElement = document.getElementById('peliculaAnio');
+    if (anioElement) anioElement.textContent = pelicula.anio || 'N/A';
 
-    // Meta información
-    const anioElement = document.getElementById('pelicula-anio');
-    if (anioElement) anioElement.textContent = pelicula.anio;
+    const generoElement = document.getElementById('peliculaGenero');
+    if (generoElement) generoElement.textContent = pelicula.genero || 'N/A';
 
-    const generoElement = document.getElementById('pelicula-genero');
-    if (generoElement) generoElement.textContent = pelicula.genero;
-
-    const duracionElement = document.getElementById('pelicula-duracion');
+    const duracionElement = document.getElementById('peliculaDuracion');
     if (duracionElement) duracionElement.textContent = pelicula.duracion || 'N/A';
 
-    // Director
-    const directorElement = document.getElementById('pelicula-director');
-    if (directorElement) {
-        directorElement.textContent = pelicula.director || 'No especificado';
+    const directorElement = document.getElementById('peliculaDirector');
+    if (directorElement) directorElement.textContent = pelicula.director || 'No especificado';
+
+    const descElement = document.getElementById('peliculaDescripcion');
+    if (descElement) descElement.textContent =
+        pelicula.sinopsis || pelicula.descripcion || 'Sinopsis no disponible';
+
+    // ====== IMAGEN DEL POSTER ======
+    const imagen = document.getElementById('peliculaImagen');
+    if (imagen && pelicula.imagen) {
+        // Arreglar posible ruta con "/" al inicio
+        let ruta = pelicula.imagen.replace(/^\/+/, '');
+        console.log('Ruta de imagen final usada:', ruta);
+        imagen.src = ruta;
+        imagen.alt = `Poster de ${pelicula.titulo || ''}`;
+    } else {
+        console.warn('No se pudo asignar la imagen. Valor pelicula.imagen:', pelicula.imagen);
     }
 
-    // Sinopsis (Descripción)
-    const sinopsisElement = document.getElementById('pelicula-sinopsis');
-    if (sinopsisElement) {
-        sinopsisElement.textContent = pelicula.sinopsis || 'Sinopsis no disponible';
-        console.log('Sinopsis actualizada:', pelicula.sinopsis);
-    }
+    // ====== DETALLES INFERIORES ======
+    const detalleTitulo = document.getElementById('detalleTitulo');
+    if (detalleTitulo) detalleTitulo.textContent = pelicula.titulo || '';
 
-    // Actores
-    const actoresLista = document.getElementById('actores-lista');
-    if (actoresLista) {
-        actoresLista.innerHTML = '';
-        
-        if (pelicula.actores && pelicula.actores.length > 0) {
-            pelicula.actores.forEach(actor => {
-                const actorItem = document.createElement('div');
-                actorItem.className = 'actor-item';
-                actorItem.textContent = actor;
-                actoresLista.appendChild(actorItem);
-            });
-            console.log('Actores cargados:', pelicula.actores.length);
-        } else {
-            actoresLista.innerHTML = '<p>Información de actores no disponible</p>';
-        }
-    }
+    const detalleAnio = document.getElementById('detalleAnio');
+    if (detalleAnio) detalleAnio.textContent = pelicula.anio || '';
 
-    // Actualizar el título de la página
-    document.title = `${pelicula.titulo} - Tu Movie.com`;
-    
-    console.log('✓ Información de película cargada correctamente:', pelicula.titulo);
+    const detalleGenero = document.getElementById('detalleGenero');
+    if (detalleGenero) detalleGenero.textContent = pelicula.genero || '';
+
+    const detalleDirector = document.getElementById('detalleDirector');
+    if (detalleDirector) detalleDirector.textContent = pelicula.director || '';
+
+    // Título de la pestaña
+    document.title = `${pelicula.titulo || 'Película'} - TuMovie.com`;
+
+    console.log('✓ Información de película pintada en la página.');
 }
 
-// Función para mostrar errores
 function mostrarError(mensaje) {
-    const container = document.querySelector('.container .content-container');
-    if (container) {
-        container.innerHTML = `
-            <div class="error-container">
-                <h2>Error</h2>
-                <p>${mensaje}</p>
-                <button class="featured-button" onclick="window.location.href='index.html'">
-                    <i class="fas fa-arrow-left"></i> Volver al inicio
-                </button>
-            </div>
-        `;
-    }
-}
-
-// Cargar los detalles cuando se carga la página
-console.log('Script pelicula.js cargado. ID de película:', peliculaId);
-
-// Ejecutar inmediatamente si el DOM ya está listo, sino esperar
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', cargarDetallesPelicula);
-} else {
-    // DOM ya está listo
-    cargarDetallesPelicula();
+    alert(mensaje); // sencillo por ahora
 }
