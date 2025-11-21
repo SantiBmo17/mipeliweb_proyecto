@@ -26,7 +26,7 @@ async function loginUser() {
 
     const datos = { email, password };
 
-    const response = await fetch("/api/login", {
+    const response = await fetch("login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datos)
@@ -35,7 +35,7 @@ async function loginUser() {
     const result = await response.json();
 
     if (result.status === "ok") {
-        alert("Bienvenido " + result.email);
+        alert("Bienvenido " + result.nombre);
         localStorage.setItem("usuario", JSON.stringify(result));
         window.location.href = "/index.html";
     } else {
@@ -60,7 +60,7 @@ async function registrarUser() {
 
     const datos = { nombre, email, password };
 
-    const response = await fetch("/api/register", {
+    const response = await fetch("register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datos)
