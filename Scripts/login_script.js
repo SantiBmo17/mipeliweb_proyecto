@@ -3,13 +3,17 @@ const container = document.getElementById("container");
 const btnShowRegister = document.getElementById("btn-show-register");
 const btnShowLogin = document.getElementById("btn-show-login");
 
-btnShowRegister.addEventListener("click", () => {
-    container.classList.add("show-register");
-});
+if (btnShowRegister) {
+    btnShowRegister.addEventListener("click", () => {
+        container.classList.add("show-register");
+    });
+}
 
-btnShowLogin.addEventListener("click", () => {
-    container.classList.remove("show-register");
-});
+if (btnShowLogin) {
+    btnShowLogin.addEventListener("click", () => {
+        container.classList.remove("show-register");
+    });
+}
 
 
 // -----------------------------
@@ -26,7 +30,9 @@ async function loginUser() {
 
     const datos = { email, password };
 
-    const response = await fetch("login", {
+    // ¡CORRECCIÓN CRÍTICA!
+    // La ruta correcta de la API es /api/login, no solo /login
+    const response = await fetch("/api/login", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datos)
@@ -35,7 +41,10 @@ async function loginUser() {
     const result = await response.json();
 
     if (result.status === "ok") {
-        alert("Bienvenido " + result.nombre);
+        // Corrección defensiva: usa el nombre, si no existe usa el email, y si no 'Usuario'
+        const nombreUsuario = result.nombre || result.email || "Usuario"; 
+
+        alert("Bienvenido " + nombreUsuario);
         localStorage.setItem("usuario", JSON.stringify(result));
         window.location.href = "/index.html";
     } else {
@@ -43,6 +52,8 @@ async function loginUser() {
     }
 }
 
+// Para que la función sea accesible desde el HTML si está en un archivo separado
+window.loginUser = loginUser; 
 
 
 // -----------------------------
@@ -60,7 +71,9 @@ async function registrarUser() {
 
     const datos = { nombre, email, password };
 
-    const response = await fetch("register", {
+    // ¡CORRECCIÓN CRÍTICA!
+    // La ruta correcta de la API es /api/register, no solo /register
+    const response = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datos)
@@ -75,3 +88,6 @@ async function registrarUser() {
         alert(result.msg || "Error al registrar usuario");
     }
 }
+
+// Para que la función sea accesible desde el HTML si está en un archivo separado
+window.registrarUser = registrarUser;
